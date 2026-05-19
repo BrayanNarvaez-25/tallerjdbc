@@ -37,7 +37,8 @@ public class SelectVehiculo {
                     rs.getInt    ("anio"),
                     rs.getDouble ("precio"),
                     rs.getString ("color"),
-                    rs.getBoolean("disponible")
+                    rs.getBoolean("disponible"),
+                    rs.getInt("kilometraje")
                 );
                 lista.add(v);
                 System.out.println(v);

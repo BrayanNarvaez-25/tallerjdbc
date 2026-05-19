@@ -15,3 +15,6 @@ CREATE TABLE vehiculos(
 );
 
 SELECT * FROM vehiculos;
+
+-- PARTE 12: agregar kilometraje
+ALTER TABLE vehiculos ADD kilometraje INT;

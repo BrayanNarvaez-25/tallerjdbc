@@ -14,8 +14,8 @@ public class InsertVehiculo {
     private static final Logger log = LoggerFactory.getLogger(InsertVehiculo.class);
 
     private static final String SQL =
-        "INSERT INTO vehiculos (placa, marca, modelo, anio, precio, color, disponible) " +
-        "VALUES (?, ?, ?, ?, ?, ?, ?)";
+        "INSERT INTO vehiculos (placa, marca, modelo, anio, precio, color, disponible, kilometraje) " +
+        "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
     public void insertar(Vehiculo v) {
         Connection         conn = null;
@@ -32,6 +32,7 @@ public class InsertVehiculo {
             ps.setDouble (5, v.getPrecio());
             ps.setString (6, v.getColor());
             ps.setBoolean(7, v.isDisponible());
+            ps.setInt(8, v.getKilometraje());
 
             int filas = ps.executeUpdate();
             log.info("Vehículo insertado. Filas afectadas: {}", filas);
@@ -46,7 +47,7 @@ public class InsertVehiculo {
     // ── Llamada rápida de prueba ──────────────────────────────────
     public static void main(String[] args) {
         Vehiculo v = new Vehiculo(
-            "ABC-001", "Toyota", "Corolla", 2022, 18500.0, "Blanco", true
+            "ABC-001", "Toyota", "Corolla", 2022, 18500.0, "Blanco", true,100
         );
         new InsertVehiculo().insertar(v);
     }
