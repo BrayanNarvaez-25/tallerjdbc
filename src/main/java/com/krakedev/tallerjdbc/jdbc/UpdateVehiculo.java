@@ -14,7 +14,7 @@ public class UpdateVehiculo {
         "WHERE placa=?";
 
     public void actualizar(String placa, String marca, String modelo,
-                           int anio, double precio, String color, boolean disponible) {
+                           int anio, double precio, String color, boolean disponible,int kilometraje) {
         Connection        conn = null;
         PreparedStatement ps   = null;
 
@@ -29,6 +29,7 @@ public class UpdateVehiculo {
             ps.setString (5, color);
             ps.setBoolean(6, disponible);
             ps.setString (7, placa);   // WHERE
+            ps.setInt(8, kilometraje);
 
             int filas = ps.executeUpdate();
             log.info("Vehículo actualizado. Filas afectadas: {}", filas);
@@ -43,7 +44,7 @@ public class UpdateVehiculo {
 
     public static void main(String[] args) {
         new UpdateVehiculo().actualizar(
-            "ABC-001", "Toyota", "Corolla GR", 2023, 21000.0, "Rojo", true
+            "ABC-001", "Toyota", "Corolla GR", 2023, 21000.0, "Rojo", true,1000
         );
     }
 }
